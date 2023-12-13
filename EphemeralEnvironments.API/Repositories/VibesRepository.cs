@@ -6,8 +6,7 @@ namespace EphemeralEnvironments.API.Repositories
     {
         public List<string> GetVibes()
         {
-            return
-            [
+            return new List<string>() {
                 "Chill AF Vibes",
                 "Positive Vibes Only (No Negativity Allowed)",
                 "Vibing on a Whole New Level",
@@ -28,7 +27,7 @@ namespace EphemeralEnvironments.API.Repositories
                 "Romance Level: Cheesy Rom-Com Marathon",
                 "Deep Thoughts, Shallow Pockets",
                 "Diverse AF Vibes: Like a Playlist on Shuffle"
-            ];
+            };
         }
 
     }

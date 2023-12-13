@@ -36,7 +36,7 @@ namespace EphemeralEnvironments.API
                       config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
                   })
               .UseStartup<Startup>();
-              }).UseSerilog();
+              });
         }
 
         private static void SetupConfig()
