@@ -25,6 +25,13 @@ pipeline:
                     command: dotnet build
                   timeout: ""
                   type: Run
+              - step:
+                  type: Run
+                  name: run
+                  identifier: run
+                  spec:
+                    shell: Sh
+                    command: dotnet run --project .\EphemeralEnvironments.API\EphemeralEnvironments.API.csproj
           platform:
             os: Linux
             arch: Amd64
