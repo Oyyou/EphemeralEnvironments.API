@@ -23,6 +23,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: dotnet build
+                    arguments: "--framework net8.0"
                   timeout: ""
                   type: Run
           platform:
