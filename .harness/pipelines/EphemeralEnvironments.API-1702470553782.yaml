@@ -21,11 +21,21 @@ pipeline:
                   identifier: echo
                   name: build
                   spec:
+                    connectorRef: <+input>
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Sh
                     command: dotnet build
-                    arguments: "--framework net8.0"
                   timeout: ""
                   type: Run
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: <+input>
+                    repo: oyyou/ephemeralenvironments.api
+                    tags:
+                      - latest
           platform:
             os: Linux
             arch: Amd64
