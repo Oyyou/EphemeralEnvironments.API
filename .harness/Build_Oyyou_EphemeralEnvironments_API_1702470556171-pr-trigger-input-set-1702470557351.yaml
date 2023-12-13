@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Oyyou_EphemeralEnvironments_API_1702470556171-pr-trigger-input-set
+  identifier: Build_Oyyou_EphemeralEnvironments_API_1702470556171prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Oyyou_EphemeralEnvironments_API_1702470556171
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

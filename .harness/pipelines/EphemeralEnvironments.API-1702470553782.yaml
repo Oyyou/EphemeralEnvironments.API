@@ -1,0 +1,35 @@
+pipeline:
+  identifier: Build_Oyyou_EphemeralEnvironments_API_1702470556171
+  name: Build EphemeralEnvironments.API
+  orgIdentifier: default
+  projectIdentifier: default_project
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1702470542989
+        repoName: Oyyou/EphemeralEnvironments.API
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: echo
+                  name: build
+                  spec:
+                    shell: Sh
+                    command: dotnet build
+                    arguments: "--framework net8.0"
+                  timeout: ""
+                  type: Run
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+        type: CI
