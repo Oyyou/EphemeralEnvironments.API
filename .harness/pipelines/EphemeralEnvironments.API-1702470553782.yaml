@@ -19,15 +19,16 @@ pipeline:
             steps:
               - step:
                   identifier: echo
-                  name: echo
+                  name: build
                   spec:
-                    command: echo hello world
+                    shell: Sh
+                    command: dotnet build
                   timeout: ""
                   type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
