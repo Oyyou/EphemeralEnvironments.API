@@ -21,17 +21,21 @@ pipeline:
                   identifier: echo
                   name: build
                   spec:
+                    connectorRef: <+input>
+                    image: https://microsoft.com/dotnet/core/sdk:6.0
                     shell: Sh
                     command: dotnet build
                   timeout: ""
                   type: Run
               - step:
-                  type: Run
-                  name: run
-                  identifier: run
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    shell: Sh
-                    command: dotnet run --project ./EphemeralEnvironments.API/EphemeralEnvironments.API.csproj
+                    connectorRef: <+input>
+                    repo: NiallLewin/EphemeralEnvironments.API
+                    tags:
+                      - latest
           platform:
             os: Linux
             arch: Amd64
