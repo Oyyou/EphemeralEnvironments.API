@@ -33,7 +33,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: <+input>
-                    repo: NiallLewin/EphemeralEnvironments.API
+                    repo: oyyou/ephemeralenvironments.api
                     tags:
                       - latest
           platform:
