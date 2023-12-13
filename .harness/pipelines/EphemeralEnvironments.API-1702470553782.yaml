@@ -22,7 +22,7 @@ pipeline:
                   name: build
                   spec:
                     connectorRef: <+input>
-                    image: mcr.microsoft.com/dotnet/aspnet:6.0
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Sh
                     command: dotnet build
                   timeout: ""
