@@ -36,6 +36,8 @@ pipeline:
                     repo: oyyou/ephemeralenvironments.api
                     tags:
                       - latest
+                    dockerfilePath: ./EphemeralEnvironments.API/Dockerfile
+                    context: ./EphemeralEnvironments.API
           platform:
             os: Linux
             arch: Amd64
