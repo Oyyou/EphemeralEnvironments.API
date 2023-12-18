@@ -36,6 +36,7 @@ pipeline:
                     repo: oyyou/ephemeralenvironments.api
                     tags:
                       - latest
+                    dockerfile: <+input>
                     context: ./EphemeralEnvironments.API
           platform:
             os: Linux
