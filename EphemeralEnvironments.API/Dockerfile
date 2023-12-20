@@ -6,20 +6,20 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["EphemeralEnvironments.API/EphemeralEnvironments.API.csproj", "EphemeralEnvironments.API/"]
-RUN dotnet restore "./EphemeralEnvironments.API/./EphemeralEnvironments.API.csproj"
+RUN dotnet restore "EphemeralEnvironments.API/EphemeralEnvironments.API.csproj"
 COPY . .
+
 WORKDIR "/src/EphemeralEnvironments.API"
-RUN dotnet build "./EphemeralEnvironments.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "EphemeralEnvironments.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./EphemeralEnvironments.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "EphemeralEnvironments.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
 ENTRYPOINT ["dotnet", "EphemeralEnvironments.API.dll"]
 

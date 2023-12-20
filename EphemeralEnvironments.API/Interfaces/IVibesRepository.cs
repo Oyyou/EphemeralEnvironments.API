@@ -1,7 +1,9 @@
-﻿namespace EphemeralEnvironments.API.Interfaces
+﻿using EphemeralEnvironments.API.Entities;
+
+namespace EphemeralEnvironments.API.Interfaces
 {
     public interface IVibesRepository
     {
-        public List<string> GetVibes();
+        public IEnumerable<Vibes> GetVibes();
     }
 }

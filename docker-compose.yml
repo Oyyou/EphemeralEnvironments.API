@@ -9,7 +9,13 @@ services:
     build:
       context: .
       dockerfile: EphemeralEnvironments.API/Dockerfile
+    networks:
+      - ee_net
     expose: 
       - 6050
     ports: 
       - 6050:80
+
+networks:
+  ee_net:
+    external: true

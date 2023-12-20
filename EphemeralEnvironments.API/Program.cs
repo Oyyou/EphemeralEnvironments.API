@@ -26,17 +26,17 @@ namespace EphemeralEnvironments.API
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-              .ConfigureWebHostDefaults(webBuilder =>
-              {
-                  webBuilder
-              .UseIIS()
-              .ConfigureAppConfiguration((_, config) =>
-                  {
-                      config.SetBasePath(AppContext.BaseDirectory);
-                      config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-                  })
-              .UseStartup<Startup>();
-              });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder
+                    .ConfigureAppConfiguration((_, config) =>
+                    {
+                        config.SetBasePath(Directory.GetCurrentDirectory());
+                        config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                        Console.WriteLine($"BasePath: {Directory.GetCurrentDirectory()}");
+                    })
+                    .UseStartup<Startup>();
+                });
         }
 
         private static void SetupConfig()

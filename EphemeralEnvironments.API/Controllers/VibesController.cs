@@ -19,8 +19,18 @@ namespace EphemeralEnvironments.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var allVibes = _vibesRepository.GetVibes();
-            return Ok(allVibes);
+            try
+            {
+                var allVibes = _vibesRepository
+                    .GetVibes()
+                    .Select(v => v.Vibe)
+                    .ToList();
+                return Ok(allVibes);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.ToString());
+            }
         }
     }
 }
