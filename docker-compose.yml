@@ -15,8 +15,6 @@ services:
       - 6050
     ports: 
       - 6050:80
-    depends_on:
-      - ee.postgres
 
 networks:
   ee_net:
