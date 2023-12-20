@@ -2,6 +2,8 @@ version: '3.9'
 
 services:
   ee.api:
+    labels:
+      shipyard.route: '/api'
     container_name: ee-api
     image: ${DOCKER_REGISTRY-}ee-api
     build:
