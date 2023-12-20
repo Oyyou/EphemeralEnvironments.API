@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  ee.api:
+    container_name: ee-api
+    image: ${DOCKER_REGISTRY-}ee-api
+    build:
+      context: .
+      dockerfile: EphemeralEnvironments.API/Dockerfile
+    expose: 
+      - 6050
+    ports: 
+      - 6050:80
