@@ -16,7 +16,9 @@ namespace EphemeralEnvironments.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            dynamic envVars = Environment.GetEnvironmentVariables();
+            var connectionString = $"Host={envVars.EE_POSTGRES_SERVICE_HOST};Port=5432;Database=postgres;Username=postgres;Password=Password123!";
+            // string connectionString = Configuration.GetConnectionString("DefaultConnection");
             Console.WriteLine($"ConfigureServices connectionstring: {connectionString}");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(connectionString));
