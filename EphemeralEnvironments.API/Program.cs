@@ -33,6 +33,7 @@ namespace EphemeralEnvironments.API
                     {
                         config.SetBasePath(Directory.GetCurrentDirectory());
                         config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                        config.AddEnvironmentVariables();
                         Console.WriteLine($"BasePath: {Directory.GetCurrentDirectory()}");
                     })
                     .UseStartup<Startup>();

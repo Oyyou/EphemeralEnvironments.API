@@ -17,7 +17,7 @@ namespace EphemeralEnvironments.API
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
-            Console.WriteLine(connectionString);
+            Console.WriteLine($"ConfigureServices connectionstring: {connectionString}");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(connectionString));
 
