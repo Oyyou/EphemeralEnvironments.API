@@ -1,4 +1,5 @@
-﻿using EphemeralEnvironments.API.Interfaces;
+﻿using EphemeralEnvironments.API.Infrastructure.Settings;
+using EphemeralEnvironments.API.Interfaces;
 using EphemeralEnvironments.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,16 @@ namespace EphemeralEnvironments.API
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddHttpClient();
+
+            ConfigureDI(services);
+        }
+
+        private void ConfigureDI(IServiceCollection services)
+        {
+            var domainCommunicationSettings = new DomainCommunicationSettings();
+            this.Configuration.Bind("domainCommunication", domainCommunicationSettings);
+            services.AddSingleton(domainCommunicationSettings);
 
             services.AddScoped<IVibesRepository, VibesRepository>();
         }

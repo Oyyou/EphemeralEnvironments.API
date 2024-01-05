@@ -6,7 +6,7 @@
     <ProjectGuid>cfa0a29b-c55b-4b66-99b7-cac6a7172d8a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>yl.domain.notification.service</DockerServiceName>
+    <DockerServiceName>ee.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
