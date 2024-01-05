@@ -4,7 +4,7 @@ services:
   ee.api:
     labels:
       shipyard.route: '/api'
-    container_name: ee-api
+    container_name: ee.api
     image: ${DOCKER_REGISTRY-}ee-api
     build:
       context: .
