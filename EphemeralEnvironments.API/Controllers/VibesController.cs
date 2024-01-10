@@ -9,6 +9,8 @@ namespace EphemeralEnvironments.API.Controllers
     [Route("api/vibes")]
     public class VibesController : ControllerBase
     {
+        private static Random _random = new Random();
+
         private readonly HttpClient _httpClient;
         private readonly IVibesRepository _vibesRepository;
         private readonly string _domainUrl;
@@ -61,6 +63,22 @@ namespace EphemeralEnvironments.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("random")]
+        public IActionResult GetRandom()
+        {
+            try
+            {
+                var allVibes = _vibesRepository
+                    .GetVibes()
+                    .ToList();
+                return Ok(allVibes[_random.Next(0, allVibes.Count)]);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.ToString());
             }
         }
     }
